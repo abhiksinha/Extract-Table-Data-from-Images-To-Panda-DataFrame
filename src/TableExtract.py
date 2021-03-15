@@ -91,7 +91,7 @@ def Table_Find(img):
     thresh, blended = cv2.threshold(blended,128,255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     cv2.imwrite("blended.jpg", blended)
      
-    ## Detect contours for following box detection 
+    ## Detect contours in the blended image
     contours, hierarchy = cv2.findContours(blended, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     return contours,hierarchy
@@ -137,7 +137,7 @@ row=len(box)//i
 ##use for plotting 
 #fig, axs = plt.subplots(row,col,figsize=(10,10))
 
-##list of texts returns by each cell
+## maintaining a list for texts returns by each cell(bounding boxes are cells of a table)
 data=[]
 
 ### for all the cells finding the text or data using imagetotext2 function
